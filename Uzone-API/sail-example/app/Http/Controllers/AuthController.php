@@ -14,7 +14,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Requests\Validation;
 
 class AuthController extends Controller
 {
@@ -65,23 +65,8 @@ class AuthController extends Controller
 
 
     // ユーザー情報の登録を行うメソッド
-    public function register(Request $request)
+    public function register(Validation $request)
     {
-
-        // //リクエストデータに対するバリデーションを実行
-        // $validated = $request->validate([
-        //     'kanji_last_name' => ['required' , 'regex:/^[一-龥]+$/u' ],//漢字
-        //     'kanji_first_name' => ['required' ,'regex:/^[一-龥]+$/u'],//漢字
-        //     'hiragana_last_name' => ['required' ,'regex:/^[ぁ-んー]+$/u'],//ひらがな
-        //     'hiragana_first_name' => ['required' ,'regex:/^[ぁ-んー]+$/u'],//ひらがな
-        //     'roman_last_name' => ['required','regex:/^[a-zA-Z]+$/'], // ローマ字
-        //     'roman_first_name' => ['required' ,'regex:/^[a-zA-Z]+$/'], // ローマ字
-        //     'email' => 'required|string|email|max:255|unique:users',
-        //     'password' => 'required|string|min:8|confirmed',
-        // ]);
-
-        // Log::info($request);
-        /*$validated['kanji_last_name']*/
 
         //ユーザーのアップデート
         DB::table('users')
@@ -90,7 +75,7 @@ class AuthController extends Controller
                 'kanji_last_name' => $request->input('kanji_last_name'),
                 'kanji_first_name' => $request->input('kanji_first_name'),
                 'hiragana_last_name' => $request->input('hiragana_last_name'),
-                'hiragana_first_name' => $request->input('hiragana_first_name'),
+                'hiragana_first_name' => $request->input('hiragana_first_name7'),
                 'roman_last_name' => $request->input('roman_last_name'),
                 'roman_first_name' => $request->input('roman_first_name'),
                 'password' => Hash::make($request->input('password')), //パスワードをハッシュ化
