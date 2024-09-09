@@ -4,6 +4,8 @@ import {
   FormErrorMessage,
   FormHelperText,
   Input,
+  Box,
+  Text,
 } from '@chakra-ui/react'
 
 
@@ -11,10 +13,15 @@ import {
 
 export default function UploadForm() {
   return(
-    <FormControl>
-      <FormLabel>Email address</FormLabel>
-      <Input type='email' />
-      <FormHelperText>We'll never share your email.</FormHelperText>
-    </FormControl>
+    <div>
+      <FormControl>
+        <FormLabel>Email address</FormLabel>
+        <Input type='email' />
+        <FormHelperText>We'll never share your email.</FormHelperText>
+      </FormControl>
+      <Box>
+        <Text>アップロード</Text>
+      </Box>
+    </div>
   )
 }
